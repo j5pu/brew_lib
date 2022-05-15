@@ -1,6 +1,9 @@
-# Init
+# Brew lib
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/init`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to your new gem! In this directory, 
+you'll find the files you need to be able to package up your Ruby library into a gem. 
+Put your Ruby code in the file `lib/brew_lib`. 
+To experiment with that code, run `bin/console` for an interactive prompt.
 
 TODO: Delete this and the text above, and describe your gem
 
@@ -8,11 +11,11 @@ TODO: Delete this and the text above, and describe your gem
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add init
+    $ bundle add brew_lib
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install init
+    $ gem install brew_lib
 
 ## Usage
 
@@ -26,7 +29,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/init. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/init/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/brew_lib. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/brew_lib/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -34,4 +37,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Init project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/init/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the brew_lib project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/brew_lib/blob/main/CODE_OF_CONDUCT.md).

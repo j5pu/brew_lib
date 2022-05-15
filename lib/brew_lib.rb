@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "init/version"
+require_relative "brew_lib/version"
 
-module Init
+module BrewLib
   class Error < StandardError; end
   # Your code goes here...
+  puts VERSION
 end

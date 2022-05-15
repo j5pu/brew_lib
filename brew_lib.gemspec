@@ -8,6 +8,11 @@ Gem.pre_install do |installer|
   installer.spec.post_install_message = "Post-install: #{output}"
 end
 
+Gem.post_install do |post|
+  puts "Post-install: setting message "
+  puts post
+end
+
 Gem::Specification.new do |spec|
   spec.name = "brew_lib"
   spec.version = BrewLib::VERSION

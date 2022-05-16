@@ -1,27 +1,21 @@
 # frozen_string_literal: true
 
 # https://guides.rubygems.org/plugins/
-
+# https://github.com/rvm/executable-hooks/blob/master/lib/rubygems_plugin.rb
 require "pathname"
 def run(action, installer)
   path = Pathname.new(installer.spec.lib_dirs_glob) / "#{action}.rb"
-  if path.exist?
-    delete = false
-    unless $LOAD_PATH.include?(installer.spec.lib_dirs_glob)
-      $LOAD_PATH.unshift installer.spec.lib_dirs_glob
-      delete = true
-    end
-    #noinspection RubyResolve
-    require action
-    if delete
-      $LOAD_PATH.delete installer.spec.lib_dirs_glob
-    end
-    true
-  end
-end
+  return unless path.exist?
 
-def msg(action, installer)
-  puts "Finished: plugin: #{action} => #{installer.spec.name} (#{installer.spec.version})"
+  delete = false
+  unless $LOAD_PATH.include?(installer.spec.lib_dirs_glob)
+    $LOAD_PATH.unshift installer.spec.lib_dirs_glob
+    delete = true
+  end
+  # noinspection RubyResolve
+  require action
+  $LOAD_PATH.delete installer.spec.lib_dirs_glob if delete
+  true
 end
 
 Gem.pre_install do |installer|
@@ -45,9 +39,7 @@ Gem.post_uninstall do |installer|
 end
 
 # TODO: el caller o que solo se haga una vez
-=begin
-bundle clean --force
-gem uninstall --ignore-dependencies --all -x
-gem install bundle
-bundle install
-=end
+# bundle clean --force
+# gem uninstall --ignore-dependencies --all -x
+# gem install bundle bundler irb
+# bundle install

@@ -1,48 +1,51 @@
 # frozen_string_literal: true
 
-require 'active_support/core_ext/string'
 require "optparse"
 require "ostruct"
+require "pathname"
 
 require_relative "brew_lib/version"
 
+# BrewLib
 module BrewLib
+  NAME = Pathname.new(__FILE__).basename.sub_ext("").to_s
   class Error < StandardError; end
 
   def self.pre_install
     # noinspection RubyNilAnalysis
-    puts "Running #{__method__} => #{BrewLib.name.underscore} (#{BrewLib::VERSION})"
+    puts "Running #{__method__} => #{NAME} (#{BrewLib::VERSION})"
   end
 
   def self.pre_uninstall
     # noinspection RubyNilAnalysis
-    puts "Running #{__method__} => #{BrewLib.name.underscore} (#{BrewLib::VERSION})"
+    puts "Running #{__method__} => #{NAME} (#{BrewLib::VERSION})"
   end
 
   def self.post_build
     # noinspection RubyNilAnalysis
-    puts "Running #{__method__} => #{BrewLib.name.underscore} (#{BrewLib::VERSION})"
+    puts "Running #{__method__} => #{NAME} (#{BrewLib::VERSION})"
   end
 
   def self.post_install
     # noinspection RubyNilAnalysis
-    puts "Running #{__method__} => #{BrewLib.name.underscore} (#{BrewLib::VERSION})"
+    puts "Running #{__method__} => #{NAME} (#{BrewLib::VERSION})"
   end
 
   def self.post_uninstall
     # noinspection RubyNilAnalysis
-    puts "Running #{__method__} => #{BrewLib.name.underscore} (#{BrewLib::VERSION})"
+    puts "Running #{__method__} => #{NAME} (#{BrewLib::VERSION})"
   end
 
+  # BrewLib::CLI
   class CLI
     def initialize(argv = ARGV)
       exception_handling do
         options_set_default
         OptionParser.new do |opts|
           # noinspection RubyNilAnalysis
-          opts.banner = "#{BrewLib.name.underscore} {options}"
+          opts.banner = "#{NAME} {options}"
           opts.separator ""
-          opts.separator "Options are ..."
+          opts.separator "Options:"
 
           opts.on_tail("-h", "--help", "-H", "Display this help message.") do
             puts opts
@@ -58,28 +61,17 @@ module BrewLib
     # A list of all the standard options used in rake, suitable for
     # passing to OptionParser.
     def options_spec # :nodoc:
-        [
-           ["--post", "-p",
-            "Post install " ,
-            lambda { |_| options.post = true }
-          ],
-         ["--silent", "-s",
-            "Like --quiet, but also suppresses the " +
-            "'in directory' announcement.",
-            lambda { |_| options.silent = true }
-          ],
-          ["--verbose", "-v",
-            "Log message to standard output.",
-            lambda { |_| options.verbose = true }
-          ],
-          ["--version", "-V",
-            "Display the program version.",
-            lambda { |_|
-              puts BrewLib::VERSION
-              exit
-            }
-          ],
-        ]
+      [
+        ["--post", "-p", "Post install ", ->(_) { options.post = true }],
+        ["--silent", "-s", "Like --quiet, but also suppresses the 'in directory' announcement.",
+         ->(_) { options.silent = true }],
+        ["--verbose", "-v", "Log message to standard output.", ->(_) { options.verbose = true }],
+        ["--version", "-V", "Display the program version.",
+         lambda { |_|
+           puts BrewLib::VERSION
+           exit
+         }]
+      ]
     end
 
     # Application options from the command line
@@ -95,20 +87,20 @@ module BrewLib
     end
 
     # Provide standard exception handling for the given block.
-    def exception_handling # :nodoc:
+    def exception_handling
       yield
     rescue SystemExit
       # Exit silently with current status
       raise
-    rescue OptionParser::InvalidOption => ex
-      $stderr.puts ex.message
+    rescue OptionParser::InvalidOption => e
+      warn e.message
       exit(false)
-    rescue Exception => ex
+    rescue StandardError => e
       # Exit with error message
-      puts ex
-      puts ex.backtrace unless ex.backtrace.nil?
-      puts ex.cause unless ex.cause.nil?
-      puts ex.chain unless ex.chain.nil?
+      puts e
+      puts e.backtrace unless e.backtrace.nil?
+      puts e.cause unless e.cause.nil?
+      puts e.chain unless e.chain.nil?
       exit(false)
     end
   end

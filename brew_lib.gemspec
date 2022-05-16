@@ -2,10 +2,10 @@
 
 # noinspection RubyMismatchedArgumentType
 $LOAD_PATH.unshift File.expand_path("lib", __dir__)
-require "brew_lib/version"
+require "brew_lib"
 
 Gem::Specification.new do |spec|
-  spec.name = Pathname.new(__FILE__).basename.sub_ext("").to_s
+  spec.name = BrewLib::NAME
   spec.version = BrewLib::VERSION
   spec.authors = ["root"]
   spec.email = ["root@example.com"]
@@ -29,13 +29,12 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "activesupport", "< 7"
   spec.add_dependency "awesome_print"
-  spec.add_dependency "bundle"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
   spec.add_development_dependency "aruba"
+  spec.add_development_dependency "bundle"
   spec.add_development_dependency "cucumber"
   spec.add_development_dependency "gem-release"
   spec.add_development_dependency "irb"

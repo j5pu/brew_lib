@@ -5,7 +5,6 @@ require "rake/testtask"
 require "rubocop/rake_task"
 require_relative "lib/brew_lib"
 
-
 Rake::TestTask.new(:test) do |t|
   t.libs << "test"
   t.libs << "lib"
@@ -29,10 +28,5 @@ task default: %i[test rubocop]
 
 desc "Show tasks in current Rakefile, to see descriptions rake -T or rake -D"
 task :tasks do
-  sh "rake", "--tasks"
-end
-
-desc "Install new version of gem after publish to rubygems"
-task :instal do
   sh "rake", "--tasks"
 end

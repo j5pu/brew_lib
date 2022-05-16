@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require "pathname"
 
-$:.unshift File.expand_path('../lib', Pathname.new(__FILE__).dirname)
+$LOAD_PATH.unshift File.expand_path("../lib", Pathname.new(__FILE__).dirname)
 require "brew_lib"
 
 BrewLib::CLI.new(ARGV)

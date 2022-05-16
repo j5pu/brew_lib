@@ -22,7 +22,7 @@ task bump: [:test] do |_, args|
   part = args.to_a.fetch(0, "patch")
   sh "{ git add -A && git commit --quiet -m 'bump #{part}' >/dev/null &&
           gem bump --silent --quiet --tag --push --release &&
-          gh release create #{version} --generate-notes &&
+          gh release create $(git describe --tags --abbrev=0) --generate-notes &&
           gem install brew_lib; } || true"
 end
 

@@ -4,6 +4,10 @@ require "bundler/gem_tasks"
 require "rake/testtask"
 require_relative "lib/brew_lib"
 
+def version
+  `git describe --tags --abbrev=0`.chomp
+end
+
 desc "Show all tasks in current Rakefile, to see descriptions rake -T or rake -D"
 task :all do
   Rake::Task.tasks.each do |task|
@@ -16,9 +20,11 @@ task :tasks do
   sh "rake", "--tasks"
 end
 
+desc "Create a new release and push [patch|minor|major], default is patch"
 task bump: [:test] do |t, args|
-  raise = args.to_a.fetch(0, "minor")
-  a = sh "git add -A && { git commit -m 'bump #{raise}' || true; } && gem bump --tag --push --release"
+  part = args.to_a.fetch(0, "patch")
+  sh "git add -A && { git commit --quiet -m 'bump #{part}' 2>/dev/null || true; } &&
+           gem bump --silent --quiet --tag --push --release && gh release create #{version} --generate-notes"
   puts args.to_a.fetch(0, "minor")
 end
 

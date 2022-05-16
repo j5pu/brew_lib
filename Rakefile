@@ -23,7 +23,7 @@ task bump: [:test] do |_, args|
   sh "{ git add -A && git commit --quiet -m 'bump #{part}' >/dev/null &&
           gem bump --silent --quiet --tag --push --release &&
           gh release create $(git describe --tags --abbrev=0) --generate-notes &&
-          sleep 10; gem install --version $(git describe --tags --abbrev=0) brew_lib; } || true"
+          sleep 10; gem install brew_lib -v $(git describe --tags --abbrev=0 | sed 's/v//g'); } || true"
 end
 
 task default: %i[test rubocop]

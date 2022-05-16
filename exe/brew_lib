@@ -1,3 +1,8 @@
 #!/usr/bin/env ruby
 
+require "pathname"
+
+$:.unshift File.expand_path('../lib', Pathname.new(__FILE__).dirname)
 require "brew_lib"
+
+BrewLib::CLI.new(ARGV)

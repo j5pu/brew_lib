@@ -21,7 +21,9 @@ desc "Create a new release, push and system install [patch|minor|major], default
 task bump: [:test] do |_, args|
   part = args.to_a.fetch(0, "patch")
   sh "{ git add -A && git commit --quiet -m 'bump #{part}' >/dev/null &&
-           gem bump --silent --quiet --tag --push --release && gh release create #{version} --generate-notes; } || true"
+          gem bump --silent --quiet --tag --push --release &&
+          gh release create #{version} --generate-notes &&
+          gem install brew_lib; } || true"
 end
 
 task default: %i[test rubocop]

@@ -17,7 +17,7 @@ def version
   `git describe --tags --abbrev=0`.chomp
 end
 
-desc "Create a new release and push [patch|minor|major], default is patch"
+desc "Create a new release, push and system install [patch|minor|major], default is patch"
 task bump: [:test] do |_, args|
   part = args.to_a.fetch(0, "patch")
   sh "{ git add -A && git commit --quiet -m 'bump #{part}' >/dev/null &&

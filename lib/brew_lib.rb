@@ -14,22 +14,12 @@ module BrewLib
     puts "Running #{__method__} => #{BrewLib.name.underscore} (#{BrewLib::VERSION})"
   end
 
-  def self.pre_reset
-    # noinspection RubyNilAnalysis
-    puts "Running #{__method__} => #{BrewLib.name.underscore} (#{BrewLib::VERSION})"
-  end
-
   def self.pre_uninstall
     # noinspection RubyNilAnalysis
     puts "Running #{__method__} => #{BrewLib.name.underscore} (#{BrewLib::VERSION})"
   end
 
   def self.post_build
-    # noinspection RubyNilAnalysis
-    puts "Running #{__method__} => #{BrewLib.name.underscore} (#{BrewLib::VERSION})"
-  end
-
-  def self.post_reset
     # noinspection RubyNilAnalysis
     puts "Running #{__method__} => #{BrewLib.name.underscore} (#{BrewLib::VERSION})"
   end

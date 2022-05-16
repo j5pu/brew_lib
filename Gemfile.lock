@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gem_name (0.1.2)
+    brew_lib (0.1.8)
       activesupport (< 7)
       awesome_print
       bundle
@@ -132,9 +132,9 @@ PLATFORMS
 
 DEPENDENCIES
   aruba
+  brew_lib!
   cucumber
   gem-release
-  gem_name!
   irb
   minitest (~> 5.0)
   pry

@@ -28,10 +28,6 @@ Gem.pre_install do |installer|
   run "pre_install", installer
 end
 
-# Gem.pre_reset do |installer|
-#   run "pre_reset", installer
-# end
-
 Gem.pre_uninstall do |installer|
   run "pre_uninstall", installer
 end
@@ -43,10 +39,6 @@ end
 Gem.post_install do |installer|
   run "post_install", installer
 end
-
-# Gem.post_reset do |installer|
-#   run "post_reset", installer
-# end
 
 Gem.post_uninstall do |installer|
   run "post_uninstall", installer

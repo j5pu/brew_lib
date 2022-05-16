@@ -23,7 +23,7 @@ end
 desc "Create a new release and push [patch|minor|major], default is patch"
 task bump: [:test] do |t, args|
   part = args.to_a.fetch(0, "patch")
-  sh "{ git add -A && git commit --quiet -m 'bump #{part}' 2>/dev/null &&
+  sh "{ git add -A && git commit --quiet -m 'bump #{part}' >/dev/null &&
            gem bump --silent --quiet --tag --push --release && gh release create #{version} --generate-notes; } || true"
 end
 

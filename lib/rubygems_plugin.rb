@@ -43,3 +43,4 @@ end
 # gem uninstall --ignore-dependencies --all -x
 # gem install bundle bundler irb
 # bundle install
+# sudo gem update --system

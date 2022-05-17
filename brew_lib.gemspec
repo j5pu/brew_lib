@@ -37,6 +37,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundle"
   spec.add_development_dependency "cucumber"
   spec.add_development_dependency "gem-release"
+  spec.add_development_dependency "gems"
   spec.add_development_dependency "irb"
   spec.add_development_dependency "minitest"
   spec.add_development_dependency "pry"

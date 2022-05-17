@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    brew_lib (0.1.17)
+    brew_lib (0.1.18)
       awesome_print
 
 GEM

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    brew_lib (0.1.10)
+    brew_lib (0.1.16)
       awesome_print
 
 GEM
@@ -55,6 +55,7 @@ GEM
     diff-lcs (1.5.0)
     ffi (1.15.5)
     gem-release (2.2.2)
+    gems (1.2.0)
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
@@ -122,6 +123,7 @@ DEPENDENCIES
   bundle
   cucumber
   gem-release
+  gems
   irb
   minitest (~> 5.0)
   pry

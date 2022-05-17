@@ -31,6 +31,18 @@ To release a new version, update the version number in `version.rb`, and then ru
 which will create a git tag for the version, push git commits and the created tag, 
 and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+### Clean
+```shell
+bundle clean --force
+gem uninstall --ignore-dependencies --all -x
+gem install bundle bundler irb
+bundle install
+```
+
+### Publish
+```shell
+rake bump
+```
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/brew_lib. 

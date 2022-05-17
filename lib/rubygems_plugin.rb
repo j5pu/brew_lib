@@ -37,10 +37,3 @@ end
 Gem.post_uninstall do |installer|
   run "post_uninstall", installer
 end
-
-# TODO: el caller o que solo se haga una vez
-# bundle clean --force
-# gem uninstall --ignore-dependencies --all -x
-# gem install bundle bundler irb
-# bundle install
-# sudo gem update --system

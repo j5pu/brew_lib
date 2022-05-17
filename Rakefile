@@ -28,6 +28,14 @@ end
 
 task default: %i[test rubocop]
 
+desc "Clean all system installed gems and install gems"
+task :setup do
+  sh "bundle clean --force || true"
+  sh "gem uninstall --ignore-dependencies --all -x"
+  sh "gem install bundle bundler irb"
+  sh "bundle install"
+end
+
 desc "Show tasks in current Rakefile, to see descriptions rake -T or rake -D"
 task :tasks do
   sh "rake", "--tasks"

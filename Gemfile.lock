@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    brew_lib (0.1.19)
+    brew_lib (0.1.20)
       awesome_print
 
 GEM
@@ -14,6 +14,7 @@ GEM
       cucumber (>= 4.0, < 8.0)
       rspec-expectations (~> 3.4)
       thor (~> 1.0)
+    asciidoctor (2.0.17)
     ast (2.4.2)
     awesome_print (1.9.2)
     builder (3.2.4)
@@ -108,7 +109,11 @@ GEM
       rubocop (~> 1.0)
     rubocop-rspec (2.10.0)
       rubocop (~> 1.19)
+    rubocop-schema-gen (0.1.6)
+      asciidoctor (~> 2.0.14)
     ruby-progressbar (1.11.0)
+    standard (0.0.36)
+      rubocop (>= 0.63)
     sys-uname (1.2.2)
       ffi (~> 1.1)
     thor (1.2.1)
@@ -134,6 +139,8 @@ DEPENDENCIES
   rubocop-minitest
   rubocop-rake
   rubocop-rspec
+  rubocop-schema-gen
+  standard
 
 BUNDLED WITH
    2.3.13
